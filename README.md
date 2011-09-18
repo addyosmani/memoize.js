@@ -7,7 +7,7 @@ Some of the problems memoization can help optimize include: recursive mathematic
 Memoize.js offers an optimized solution for memoization in JavaScript (complete write-up coming soon).
 
 Usage:
-```javascript
+```js
 
 // Fibonacci series
 function fib( x ) {
