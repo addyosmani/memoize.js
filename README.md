@@ -8,7 +8,6 @@ Memoize.js offers an optimized solution for memoization in JavaScript (complete 
 
 Usage:
 ```js
-
 // Fibonacci series
 function fib( x ) {
     if(x < 2) return 1; else return fib(x-1) + fib(x-2);

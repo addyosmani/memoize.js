@@ -16,7 +16,7 @@ function memoize( fn ) {
           currentArg = args[i];
           hash += (callEm == toString.call(currentArg)) ?   
           JSON.stringify(currentArg) : currentArg;  
-          fn.memoize = fn.memoize || {};  
+          fn.memoize || (fn.memoize = {});  
       }   
         return (hash in fn.memoize) ? fn.memoize[hash] :   
         fn.memoize[hash] = fn.apply( this , args );  
