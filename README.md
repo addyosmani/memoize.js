@@ -8,23 +8,3 @@ Some of the problems memoization can help optimize include: recursive mathematic
 
 Memoize.js offers an optimized solution for memoization in JavaScript (complete write-up coming soon).
 
-Usage:
-
-<pre>
-// Fibonacci series
-function fib( x ) {
-    if(x < 2) return 1; else return fib(x-1) + fib(x-2);
-}
-
-var fibTest = memoize(fib);
-// first call
-console.time("non-memoized call");
-console.log(fibTest(20)); 
-console.timeEnd("non-memoized call");
-
-// let's see how much better memoization fares..
-console.time("memoized call");
-console.log(fibTest(20)); 
-// 0ms in most cases (it's now already cached)
-console.timeEnd("memoized call");
-</pre>
