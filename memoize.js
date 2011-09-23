@@ -2,22 +2,18 @@
 * memoize.js
 * by @philogb and @addyosmani
 * with further optimizations by @mathias
-* and @DmitryBaranovsk
+* @DmitryBaranovsk and @GotNoSugarBaby
 * perf tests: http://bit.ly/q3zpG3
 * Released under an MIT license.
 */
 function memoize(fn) {
-  "use strict";
+   "use strict";
+   var cache = (fn.memoize = fn.memoize || {}),
+       stringifyJson = JSON.stringify,
+       sliceArray = Array.prototype.slice;
+
     return function () {
-        var args = Array.prototype.slice.call(arguments),
-            hash = "",
-            i = args.length,
-            currentArg = null;
-        while (i--) {
-            currentArg = args[i];
-            hash += (currentArg === Object(currentArg)) ? JSON.stringify(currentArg) : currentArg;
-            fn.memoize || (fn.memoize = {});
-        }
-        return (hash in fn.memoize) ? fn.memoize[hash] : fn.memoize[hash] = fn.apply(this, args);
+        var hash = stringifyJson(sliceArray.call(arguments));
+        return (hash in cache) ? cache[hash] : cache[hash] = fn.apply(this, arguments);
     };
 }
