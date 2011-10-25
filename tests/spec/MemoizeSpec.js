@@ -21,10 +21,6 @@ describe("Memoize", function(){
         expect(typeof memoize(function(){})).toEqual("function");
     });
 
-    it("does not modify the original function", function(){
-        expect(memoize(basicMaths)).not.toEqual(basicMaths);
-    });
-
     it("returns a function which behaves exactly as the one you provided it", function(){
         var memoizedFn = memoize(basicMaths);
         expect(memoizedFn(11, 1)).toEqual(basicMaths(11, 1)); // 111
