@@ -11,11 +11,10 @@
     global.memoize = global.memoize || (typeof JSON === 'object' && typeof JSON.stringify === 'function' ?
         function (func) {
             var stringifyJson = JSON.stringify,
-                sliceArray = Array.prototype.slice,
-				cache = {};
+                cache = {};
 
             return function () {
-                var hash = stringifyJson(sliceArray.call(arguments));
+                var hash = stringifyJson(arguments);
                 return (hash in cache) ? cache[hash] : cache[hash] = func.apply(this, arguments);
             };
         } : function (func) {
