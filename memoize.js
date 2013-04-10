@@ -8,7 +8,7 @@
 */
 (function (global) {
     "use strict";
-    global.memoize = global.memoize || (typeof JSON === 'object' && typeof JSON.stringify === 'function' ?
+    global.memoize || (global.memoize = (typeof JSON === 'object' && typeof JSON.stringify === 'function' ?
         function (func) {
             var stringifyJson = JSON.stringify,
                 cache = {};
@@ -19,5 +19,5 @@
             };
         } : function (func) {
             return func;
-        });
+        }));
 }(this));
