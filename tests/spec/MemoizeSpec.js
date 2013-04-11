@@ -37,5 +37,15 @@ describe("Memoize", function(){
 
         expect(memoizedFn(somebody)).toEqual(objectModification(somebody)); // ["name", "John Doe", "age", 39, "country", "England"]
     });
+    
+    it("can get and remove the cache within the memoized function",function(){
+        var memoizedFn = memoize(basicMaths);
+        var memoizedFn2 = memoize(basicMaths);
+        memoizedFn(11, 1)
+        memoizedFn2(11, 1)
+        memoizedFn2(1, 11)
+        expect(memoizedFn2.__cache.remove(1,11)).toEqual(true);
+        expect(JSON.stringify(memoizedFn2.__cache)).toEqual(JSON.stringify(memoizedFn.__cache));
+    });
 
 });
